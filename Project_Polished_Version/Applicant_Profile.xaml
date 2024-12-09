@@ -1,0 +1,175 @@
+﻿<Window x:Class="Project_Polished_Version.Classes.Applicant_Profile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Polished_Version.Classes"
+        mc:Ignorable="d"
+        Title="Applicant_Profile" Height="982" Width="800">
+    <Grid Height="971" VerticalAlignment="Top">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Profile Header -->
+        <Border Grid.Row="0" Background="#800000" Padding="0
+             ">
+            <Grid x:Name="Friend_Grid" Margin="0,2,0,0" Height="170" VerticalAlignment="Top">
+
+                <Grid.Background>
+                    <ImageBrush Stretch="None" AlignmentY="Top" AlignmentX="Center"/>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Back Button -->
+                <Button Content="Back" 
+                 Width="80" 
+                 Height="30" 
+                 Background="#d4ac0d" 
+                 Foreground="White" 
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Click="BackButton_Click" 
+                 Margin="20,19,0,0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                             BorderBrush="{TemplateBinding BorderBrush}" 
+                             BorderThickness="{TemplateBinding BorderThickness}" 
+                             CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+                <!-- Profile Information -->
+                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" Margin="-110,0,0,0">
+                    <TextBlock x:Name="Full_Name" Text="Colton Randolph" FontWeight="Bold" FontSize="26" Foreground="White" HorizontalAlignment="Center" Margin="10,20,0,0" />
+                    <TextBlock x:Name="Job_Title_txtbox" Text="Content strategist and conversion copywriter" FontSize="16" Foreground="White" Margin="10,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock x:Name="Address_txtbox" Text="Wichita, Kansas Metropolitan Area" FontSize="14" Foreground="White" Margin="10,5,0,10" HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto">
+                        <Button Content="Connections List" 
+                         Background="#d4ac0d" 
+                         Foreground="White" 
+                         Margin="10,5,5,5" 
+                         Padding="10,5" 
+                         Width="120" 
+                         Click="showFriendList_btn" Height="25">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                                     BorderBrush="{TemplateBinding BorderBrush}" 
+                                     BorderThickness="{TemplateBinding BorderThickness}" 
+                                     CornerRadius="5">
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button x:Name="Connect_Friend_Btn" Content="Connect" 
+                         Background="#d4ac0d" 
+                         Foreground="White" 
+                         Margin="10,5,5,5" 
+                         Padding="10,5" 
+                         Width="120" 
+                         Click="AddFriend_Btn" 
+                         HorizontalAlignment="Center">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                                     BorderBrush="{TemplateBinding BorderBrush}" 
+                                     BorderThickness="{TemplateBinding BorderThickness}" 
+                                     CornerRadius="5">
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Content="Message" 
+     Background="#d4ac0d" 
+     Foreground="White" 
+     Margin="10,5,5,5" 
+     Padding="10,5" 
+     Width="120" 
+     HorizontalAlignment="Center">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                                     BorderBrush="{TemplateBinding BorderBrush}" 
+                                     BorderThickness="{TemplateBinding BorderThickness}" 
+                                     CornerRadius="5">
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                    </StackPanel>
+                </StackPanel>
+                <Image Source="Images/Lorenz.jpg" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="552,19,0,0" VerticalAlignment="Top" Width="100"/>
+            </Grid>
+        </Border>
+
+        <!-- Profile Details -->
+        <ScrollViewer Grid.Row="1" Margin="20,20,20,10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+                <!-- About Section -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,20,0,10">
+                    <TextBlock Text="About" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" />
+                    <Button x:Name="abt_you_btn" Content="Edit" Width="100" Margin="10,0,0,0" HorizontalAlignment="Right" Click="abt_you_btn_Click" />
+                </StackPanel>
+                <Border BorderBrush="#D3D3D3" BorderThickness="1" Padding="10" CornerRadius="5" Background="#F9F9F9">
+                    <RichTextBox x:Name="About_RichTextBox" Height="164" IsReadOnly="True">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Border>
+
+                <!-- Experience Section -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,20,0,10">
+                    <TextBlock Text="Experience" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" />
+                    <Button x:Name="Edit_Experience_btn" Content="Edit" Width="100" Margin="10,0,0,0" HorizontalAlignment="Right" Click="Edit_Experience_btn_Click" />
+                    <Button x:Name="Add_Data_Experience" Content="Add Data" Margin="10,20,0,0"/>
+                </StackPanel>
+                <Border BorderBrush="#D3D3D3" BorderThickness="1" Padding="10" CornerRadius="5" Background="#F9F9F9" Margin="0,0,0,20">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="200">
+                        <StackPanel Orientation="Vertical" Margin="10" x:Name="Experince_StackPanel">
+                            <TextBlock Text="Experience:" FontWeight="Bold" Margin="0,5,0,0"/>
+                            <TextBox x:Name="Experience_TextBox" IsReadOnly="True" Text="Your experience here..." AcceptsReturn="True" TextWrapping="Wrap" Height="100" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+
+                <!-- Education Section -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,20,0,10">
+                    <TextBlock Text="Education" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" />
+                    <Button x:Name="Education_Edit_btn" Content="Edit" Width="100" Margin="10,0,0,0" HorizontalAlignment="Right" Click="Education_Edit_btn_Click" />
+                    <Button Content="Add Data" Margin="20,0,9,0"/>
+                </StackPanel>
+                <Border BorderBrush="#D3D3D3" BorderThickness="1" Padding="10" CornerRadius="5" Background="#F9F9F9">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="200">
+                        <StackPanel x:Name="EducationPost_SCV" Orientation="Vertical">
+                            <TextBlock Text="Education:" FontWeight="Bold" Margin="10,20,0,0"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

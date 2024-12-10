@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Polished_Version.Classes"
         mc:Ignorable="d"
-        Title="Applicant_Profile" Height="982" Width="800">
-    <Grid Height="971" VerticalAlignment="Top">
+        Title="Applicant_Profile" Height="1077" Width="800">
+    <Grid Height="1038" VerticalAlignment="Top">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -129,23 +129,15 @@
                 <!-- About Section -->
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,20,0,10">
                     <TextBlock Text="About" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" />
-                    <Button x:Name="abt_you_btn" Content="Edit" Width="100" Margin="10,0,0,0" HorizontalAlignment="Right" Click="abt_you_btn_Click" />
+                    <Button x:Name="abt_you_btn" Content="Edit" Width="123" Margin="10,0,0,0" Click="abt_you_btn_Click" Height="34" />
                 </StackPanel>
-                <Border BorderBrush="#D3D3D3" BorderThickness="1" Padding="10" CornerRadius="5" Background="#F9F9F9">
-                    <RichTextBox x:Name="About_RichTextBox" Height="164" IsReadOnly="True">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text=""/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
-                </Border>
+                <TextBox x:Name="About_TextBox" IsReadOnly="True" Text="" AcceptsReturn="True" TextWrapping="Wrap" Height="140" />
+                <Border BorderBrush="#D3D3D3" BorderThickness="1" Padding="10" CornerRadius="5" Background="#F9F9F9"/>
 
                 <!-- Experience Section -->
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,20,0,10">
                     <TextBlock Text="Experience" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" />
                     <Button x:Name="Edit_Experience_btn" Content="Edit" Width="100" Margin="10,0,0,0" HorizontalAlignment="Right" Click="Edit_Experience_btn_Click" />
-                    <Button x:Name="Add_Data_Experience" Content="Add Data" Margin="10,20,0,0"/>
                 </StackPanel>
                 <Border BorderBrush="#D3D3D3" BorderThickness="1" Padding="10" CornerRadius="5" Background="#F9F9F9" Margin="0,0,0,20">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="200">
@@ -160,13 +152,10 @@
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,20,0,10">
                     <TextBlock Text="Education" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" />
                     <Button x:Name="Education_Edit_btn" Content="Edit" Width="100" Margin="10,0,0,0" HorizontalAlignment="Right" Click="Education_Edit_btn_Click" />
-                    <Button Content="Add Data" Margin="20,0,9,0"/>
                 </StackPanel>
                 <Border BorderBrush="#D3D3D3" BorderThickness="1" Padding="10" CornerRadius="5" Background="#F9F9F9">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="200">
-                        <StackPanel x:Name="EducationPost_SCV" Orientation="Vertical">
-                            <TextBlock Text="Education:" FontWeight="Bold" Margin="10,20,0,0"/>
-                        </StackPanel>
+                        <TextBox x:Name="Education_TextBox_Copy" IsReadOnly="True" Text="Your experience here..." AcceptsReturn="True" TextWrapping="Wrap" Height="140" />
                     </ScrollViewer>
                 </Border>
             </StackPanel>

@@ -219,6 +219,7 @@
     <Compile Include="Applicant_Tracker.xaml.cs">
       <DependentUpon>Applicant_Tracker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Applicant_Info.cs" />
     <Compile Include="Classes\Resume.cs" />
     <Compile Include="Company_DashBoard.xaml.cs">
       <DependentUpon>Company_DashBoard.xaml</DependentUpon>

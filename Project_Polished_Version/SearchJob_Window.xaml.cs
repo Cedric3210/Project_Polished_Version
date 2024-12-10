@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace Project_Polished_Version
 {
-    /// <summary>
-    /// Interaction logic for SearchJob_Window.xaml
-    /// </summary>
+
     public partial class SearchJob_Window : Window
     {
         public SearchJob_Window()
@@ -27,42 +25,45 @@ namespace Project_Polished_Version
             PopulateListBox();
         }
         private List<Jobs> allJobs = new List<Jobs>();
-        private void PopulateListBox()
+        private async void PopulateListBox()
         {
-            allJobs = Job_DataBase();
+            allJobs = await Job_DataBaseAsync();
             JobList.ItemsSource = allJobs;
         }
-        public static List<Jobs> Job_DataBase()
+
+        public static async Task<List<Jobs>> Job_DataBaseAsync()
         {
             List<Jobs> jobFeed = new List<Jobs>();
-            using (MySqlConnection connection = new MySqlConnection("Server=localhost;"
-                + "Database=project_database;UserName= root;" + "Password=Cedric1234%%"))
+
+            string connectionString = "Server=localhost;Database=project_database;UserName=root;Password=Cedric1234%%;Pooling=true";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
                 {
-                    connection.Open();
-                    string query = "SELECT * FROM jobs_db";
+                    await connection.OpenAsync();
+
+                    string query = "SELECT Job_Position, Job_Description, is_filled, Job_id, Company_userNumber FROM jobs_db LIMIT 1000";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
                     {
-                        while (reader.Read())
+                        while (await reader.ReadAsync())
                         {
-                            Jobs item = new Jobs
+                            jobFeed.Add(new Jobs
                             {
                                 Job_Position = reader["Job_Position"].ToString(),
                                 Job_Description = reader["Job_Description"].ToString(),
                                 IsFilled = reader["is_filled"].ToString(),
                                 Job_id = Convert.ToInt32(reader["Job_id"]),
                                 Company_userNumber = Convert.ToInt32(reader["Company_userNumber"])
-                            };
-                            jobFeed.Add(item);
+                            });
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show($"Error: {ex.Message}");
                 }
             }
 
@@ -105,7 +106,7 @@ namespace Project_Polished_Version
                     Resume_Number = Resume_Number,
                 };
 
-                using (MySqlConnection connection = new MySqlConnection("Server=localhost;Database=project_database;UserName=root;Password=Cedric43210$"))
+                using (MySqlConnection connection = new MySqlConnection("Server=localhost;Database=project_database;UserName=root;Password=Cedric1234%%"))
                 {
                     connection.Open();
                     using (MySqlCommand command = new MySqlCommand(query, connection))
